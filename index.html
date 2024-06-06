@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title> Anagram Checker by Anurag Gaiwal </title>
+	<style>
+		*{font-size:50px}
+		body{background-color: lightblue}
+	</style>
+</head>
+
+<body>
+<center>
+	<h1>Anagram Checker</h1>
+	<form onsubmit="check()">
+		<input type="text" placeholder="Enter Your Word" id="str1"/>
+		<br/> <br/>
+		<input type="text" placeholder="Enter Your Word" id="str2"/>
+		<br/> <br/>
+		<input type="submit" value="Sort"/>
+	</form>
+	<h2 id="msg"></h2>
+	<script>
+		function check(){
+			event.preventDefault();
+			let str1 = document.getElementById("str1");
+			let str2 = document.getElementById("str2");
+			let msg = document.getElementById("msg");
+
+			if(str1.value.trim() == ""){
+				alert("Please Enter first word");
+				msg.innerHTML = "";
+				str1.focus()
+				return;
+			}
+	
+			if(str2.value.trim() == ""){
+				alert("Please Enter second word");
+				msg.innerHTML = "";
+				str2.focus()
+				return;
+			}
+				
+			let s1 = str1.value.toLowerCase().trim();
+			let s2 = str2.value.toLowerCase().trim();
+
+			if(s1.length != s2.length){
+				msg.innerHTML = "They are not anagram"
+			} else {
+				let sS1 = s1.split("").sort().join();
+				let sS2 = s2.split("").sort().join();
+				msg.innerHTML = (sS1 == sS2) ? "They are Anagram" : "They are not Anagram"
+			}
+		}	
+	</script>
+</center>
+</body>
+</html>
